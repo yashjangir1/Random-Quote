@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,500;1,700&display=swap');
+
 body {
   margin: 0;
   box-sizing: border-box;
@@ -6,13 +8,37 @@ body {
 
 .quote-text{
   font-size: 35px;
-  transition: all 1s;
+  animation: 2s anim-lineUp ease-in-out;
+  font-family: "Roboto";
+  font-weight: 700;
 }
 
 .author{
   font-size: 22px;
   text-align: right;
   transition: all 1s;
+  animation: 2s anim-lineUp ease-in-out;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-style: italic;
+}
+
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
 

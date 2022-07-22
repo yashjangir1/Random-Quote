@@ -10,6 +10,12 @@ export default function QuoteBox(){
     function handleNewQuote(){
         setClick((prevClick) => !prevClick);
         setRandomC(randomColor())
+        document.getElementById("quoteText").style.animation = "none"
+        document.getElementById("author").style.animation = "none"
+        requestAnimationFrame(() => {
+            document.getElementById("quoteText").style.animation = "2s anim-lineUp ease-in-out"
+            document.getElementById("author").style.animation = "2s anim-lineUp ease-in-out"
+        })
     }
 
     function randomColor(){
@@ -49,8 +55,8 @@ export default function QuoteBox(){
     return(
         <div className = "quote-box">
             <div>
-                <h1 style = {{color : randomC}} className = "quote-text"><i className = "fa-solid fa-quote-left quote-sign"></i> {quote}</h1>
-                <p style = {{color : randomC}} className = "author">- {author}</p>
+                <h1 id = "quoteText" style = {{color : randomC}} className = "quote-text"><i className = "fa-solid fa-quote-left quote-sign"></i> {quote}</h1>
+                <p id = "author" style = {{color : randomC}} className = "author">- {author}</p>
             </div>
             <div className = "buttons-container">
                 <button style = {{backgroundColor : randomC}} className="twitter-button" onClick = {handleTweetButton}><i className = "fa-brands fa-twitter"></i></button>
