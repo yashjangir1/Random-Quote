@@ -1,11 +1,16 @@
 import React from "react"
-import Quote from "./Quote"
 import "./index.css"
 
 export default function QuoteBox(){
     const[click, setClick] = React.useState(false)
     const [quote, setQuote] = React.useState("")
     const[author, setAuthor] = React.useState("")
+    const[randomC, setRandomC] = React.useState("#45EA7F")
+
+    function handleNewQuote(){
+        setClick((prevClick) => !prevClick);
+        setRandomC(randomColor())
+    }
 
     function randomColor(){
         let letters = '0123456789ABCDEF';
@@ -16,11 +21,18 @@ export default function QuoteBox(){
         return color;
     }
 
-    let randomC = randomColor()
+    function handleTweetButton(){
+        let url = "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=%22"
+        url += quote.split(" ").join("%20")
+        url += "%22%20" + author.split(" ").join("%20")
+        window.location.href = url
+    }
 
-    function handleNewQuote(){
-       setClick((prevClick) => !prevClick);
-       document.querySelector("body").style.backgroundColor = randomC
+    function handleTumblrShare(){
+        let url = "https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes,freecodecamp&caption="
+        url += author.split(" ").join("%20")
+        url += "&content=" + quote.split(" ").join("%20") + "&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button"
+        window.open(url, "_blank")
     }
 
     React.useEffect(() => {
@@ -32,13 +44,18 @@ export default function QuoteBox(){
         })
     }, [click])
 
+    document.querySelector("body").style.backgroundColor = randomC
+
     return(
         <div className = "quote-box">
-            <Quote author = {author} quote = {quote} color = {randomC}/>
+            <div>
+                <h1 style = {{color : randomC}} className = "quote-text"><i className = "fa-solid fa-quote-left quote-sign"></i> {quote}</h1>
+                <p style = {{color : randomC}} className = "author">- {author}</p>
+            </div>
             <div className = "buttons-container">
-                <button className="twitter-button"><i class="fa-brands fa-twitter"></i></button>
-                <button className="tumblr-button"><i class="fa-brands fa-tumblr"></i></button>
-                <button className="new-quote-button" onClick = {handleNewQuote}>New Quote</button>
+                <button style = {{backgroundColor : randomC}} className="twitter-button" onClick = {handleTweetButton}><i className = "fa-brands fa-twitter"></i></button>
+                <button style = {{backgroundColor : randomC}} className="tumblr-button" onClick = {handleTumblrShare}><i className = "fa-brands fa-tumblr"></i></button>
+                <button style = {{backgroundColor : randomC}} className="new-quote-button" onClick = {handleNewQuote}>New Quote</button>
             </div>
         </div>
     )

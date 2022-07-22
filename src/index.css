@@ -1,16 +1,18 @@
 body {
   margin: 0;
   box-sizing: border-box;
+  transition: all 1s;
 }
 
 .quote-text{
   font-size: 35px;
-  transition: ease-in-out 1s;
+  transition: all 1s;
 }
 
 .author{
   font-size: 22px;
   text-align: right;
+  transition: all 1s;
 }
 
 
@@ -44,6 +46,7 @@ body {
   border-radius: 5px;
   border:none;
   color: #ffffff;
+  transition: all 1s;
 }
 
 .tumblr-button{
@@ -54,6 +57,7 @@ body {
   margin-left: 10px;
   border:none;
   color: #ffffff;
+  transition: all 1s;
 }
 
 .new-quote-button{
@@ -64,4 +68,5 @@ body {
   margin-left: auto;
   border: none;
   color: #ffffff;
+  transition: all 1s;
 }
